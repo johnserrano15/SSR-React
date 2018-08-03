@@ -1,0 +1,57 @@
+{
+  "name": "ssr-react",
+  "version": "0.0.1",
+  "description": "Ejemplo de server side rendering",
+  "main": "server.js",
+  "scripts": {
+    "build": "webpack --progress --config webpack.dev.js -w",
+    "webpack-prod": "webpack -p --progress --config webpack.prod.js --mode production",
+    "webpack-dev": "webpack -p --progress --config webpack.dev.js --mode development",
+    "lint": "standard --fix"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "node": true,
+      "jquery": true
+    },
+    "parser": "babel-eslint",
+    "rules": {
+      "no-console": "warn"
+    },
+    "extends": [
+      "standard",
+      "standard-jsx"
+    ]
+  },
+  "eslintIgnore": [
+    "/node_modules/*",
+    "build/*",
+    "!build/index.js",
+    "bundle.js",
+    "dist/*",
+    ".*/*",
+    ".*"
+  ],
+  "keywords": [],
+  "author": "John Serrano <jandreys15@gmail.com> (https://twitter.com/Jandrey15)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "nodemon": "^1.18.3",
+    "standard": "^11.0.1"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
