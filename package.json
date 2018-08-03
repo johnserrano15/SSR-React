@@ -4,9 +4,10 @@
   "description": "Ejemplo de server side rendering",
   "main": "server.js",
   "scripts": {
-    "build": "webpack --progress --config webpack.dev.js -w",
-    "webpack-prod": "webpack -p --progress --config webpack.prod.js --mode production",
-    "webpack-dev": "webpack -p --progress --config webpack.dev.js --mode development",
+    "start": "set NODE_ENV=production&&node dist/server/index.js",
+    "build:dev": "nodemon dist/server/index.js",
+    "webpack-prod": "set NODE_ENV=production&&webpack -p --progress --config webpack.config.js",
+    "webpack-dev": "webpack --progress --config webpack.config.js -w",
     "lint": "standard --fix"
   },
   "standard": {
@@ -47,6 +48,7 @@
     "babel-loader": "^7.1.5",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "eslint": "^5.2.0",
     "eslint-config-standard": "^11.0.0",
@@ -58,7 +60,8 @@
     "style-loader": "^0.21.0",
     "webpack": "^4.16.4",
     "webpack-cli": "^3.1.0",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.1.4",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "express": "^4.16.3",

@@ -1,16 +1,22 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: {
-    home: path.resolve(__dirname, 'src/home.jsx')
+    home: path.resolve(__dirname, '../src/home.jsx')
   },
   output: {
-    path: path.resolve(__dirname, 'dist/public'),
+    path: path.resolve(__dirname, '../dist/public'),
     filename: 'js/[name].js',
-    publicPath: '/'
+    publicPath: '/dist/public/'
   },
-  plugins: [new ExtractTextPlugin('css/[name].css')],
+  plugins: [
+    new CleanWebpackPlugin(['dist/public'], {
+      root: path.join(__dirname, '..')
+    }),
+    new ExtractTextPlugin('css/[name].css')
+  ],
   module: {
     rules: [
       {
