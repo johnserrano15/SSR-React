@@ -6,8 +6,8 @@
   "scripts": {
     "start": "set NODE_ENV=production&&node dist/server/index.js",
     "build:dev": "nodemon dist/server/index.js",
-    "webpack-prod": "set NODE_ENV=production&&webpack -p --progress --config webpack.config.js",
-    "webpack-dev": "webpack --progress --config webpack.config.js -w",
+    "webpack:prod": "set NODE_ENV=production&&webpack -p --progress --config webpack.config.js",
+    "webpack:dev": "webpack --progress --config webpack.config.js -w",
     "lint": "standard --fix"
   },
   "standard": {
