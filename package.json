@@ -11,7 +11,15 @@
     "lint": "standard --fix"
   },
   "standard": {
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "ignore": [
+      "**/out/",
+      "/lib/select2/",
+      "/lib/ckeditor/",
+      "tmp.js",
+      "build/*",
+      "dist/*"
+    ]
   },
   "eslintConfig": {
     "env": {
@@ -52,6 +60,7 @@
     "css-loader": "^1.0.0",
     "eslint": "^5.2.0",
     "eslint-config-standard": "^11.0.0",
+    "eslint-config-standard-jsx": "^5.0.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "node-sass": "^4.9.2",
     "nodemon": "^1.18.3",
