@@ -98,15 +98,27 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
-/***/ "./src/client/Html.js":
-/*!****************************!*\
-  !*** ./src/client/Html.js ***!
-  \****************************/
+/***/ "./src/client/Saludo.js":
+/*!******************************!*\
+  !*** ./src/client/Saludo.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar Html = function Html(_ref) {\n  var body = _ref.body,\n      title = _ref.title;\n  return \"\\n  <!DOCTYPE html>\\n  <html>\\n    <head>\\n      <title>\" + title + \"</title>\\n      <link rel=\\\"stylesheet\\\" href=\\\"/css/home.css\\\"/>\\n    </head>\\n    <body>\\n      <div id=\\\"app\\\">\" + body + \"</div>\\n      <script src=\\\"/js/home.js\\\"></script>\\n    </body>\\n  </html>\\n\";\n};\nexports.default = Html;\n\n//# sourceURL=webpack:///./src/client/Html.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Saludo = function Saludo(props) {\n  return _react2.default.createElement(\n    'div',\n    { className: 'Saludo' },\n    'Hola Mundo - ',\n    props.name\n  );\n};\n\nexports.default = Saludo;\n\n//# sourceURL=webpack:///./src/client/Saludo.js?");
+
+/***/ }),
+
+/***/ "./src/client/layout.js":
+/*!******************************!*\
+  !*** ./src/client/layout.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar Layout = function Layout(_ref) {\n  var body = _ref.body,\n      title = _ref.title;\n  return \"\\n  <!DOCTYPE html>\\n  <html lang='es'>\\n      <head>\\n        <meta charSet='UTF-8' />\\n        <meta\\n          name='viewport'\\n          content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'\\n        />\\n        <title>\" + title + \"</title>\\n        <link rel='stylesheet' href='/css/home.css' />\\n      </head>\\n      <body>\\n        <div id='app'>\" + body + \"</div>\\n        <script src='/js/home.js'></script>\\n      </body>\\n    </html>\\n\";\n};\nexports.default = Layout;\n\n//# sourceURL=webpack:///./src/client/layout.js?");
 
 /***/ }),
 
@@ -118,7 +130,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _Home = __webpack_require__(/*! ./client/Home */ \"./src/client/Home.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _Html = __webpack_require__(/*! ./client/Html */ \"./src/client/Html.js\");\n\nvar _Html2 = _interopRequireDefault(_Html);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\nvar port = 3000;\n\napp.use(_express2.default.static('dist/public'));\n\napp.get('/', function (req, res) {\n  console.log('Hola mundo server!');\n  // res.status(200).send('Hola mundo server :)')\n  var body = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, { saludo: 'Hola mundo' }));\n  var title = 'Server side Rendering with Styled Components';\n  console.log(body);\n  res.send((0, _Html2.default)({\n    body: body,\n    title: title\n  }));\n});\n\napp.listen(port, function () {\n  console.log('Server on port ' + port);\n});\n\n//# sourceURL=webpack:///./src/server.js?");
+eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _Home = __webpack_require__(/*! ./client/Home */ \"./src/client/Home.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _layout = __webpack_require__(/*! ./client/layout */ \"./src/client/layout.js\");\n\nvar _layout2 = _interopRequireDefault(_layout);\n\nvar _Saludo = __webpack_require__(/*! ./client/Saludo */ \"./src/client/Saludo.js\");\n\nvar _Saludo2 = _interopRequireDefault(_Saludo);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\nvar port = 3000;\n\napp.use(_express2.default.static('dist/public'));\n\napp.get('/', function (req, res) {\n  // console.log('Hola mundo server!')\n  // res.status(200).send('Hola mundo server :)')\n  var body = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, { saludo: 'Hola mundo' }));\n  var title = 'Server side Rendering with Styled Components';\n  console.log(body);\n  res.send((0, _layout2.default)({\n    body: body,\n    title: title\n  }));\n});\n\napp.get('/saludo', function (req, res) {\n  var body = (0, _server.renderToString)(_react2.default.createElement(_Saludo2.default, { name: 'John Serrano' }));\n  var title = 'Salundo';\n  res.send((0, _layout2.default)({\n    body: body,\n    title: title\n  }));\n});\n\napp.listen(port, function () {\n  console.log('Server on port ' + port);\n});\n\n//# sourceURL=webpack:///./src/server.js?");
 
 /***/ }),
 
