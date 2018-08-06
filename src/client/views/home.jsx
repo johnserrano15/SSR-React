@@ -2,12 +2,14 @@ import React from 'react'
 import Layout from './layouts/default.jsx'
 import Home from '../Home.js'
 
-module.exports = props => {
+const john = props => {
   console.log(props)
   return (
-    <Layout title='Home'>
-      {/* <div id='app' /> */}
+    <Layout title={props.title}>
       <Home />
     </Layout>
   )
 }
+
+// export default john
+module.exports = john

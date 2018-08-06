@@ -15,7 +15,7 @@ class Layout extends Component {
           <link rel='stylesheet' href='/css/home.css' />
         </head>
         <body>
-          {this.props.children}
+          <div id='app'>{this.props.children}</div>
           <script src='/js/home.js' />
         </body>
       </html>

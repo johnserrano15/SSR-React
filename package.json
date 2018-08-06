@@ -4,10 +4,10 @@
   "description": "Ejemplo de server side rendering",
   "main": "server.js",
   "scripts": {
-    "start": "set NODE_ENV=production&&node dist/server/index.js",
+    "start": "set NODE_ENV=production&&node src/index.js",
     "build:dev": "nodemon src/index.js",
-    "webpack:prod": "set NODE_ENV=production&&webpack -p --progress --config webpack.config.js",
-    "webpack:dev": "webpack --progress --config webpack.config.js -w",
+    "webpack:prod": "webpack -p --progress --config ./webpack/webpack.prod.js",
+    "webpack:dev": "webpack --progress --config ./webpack/webpack.dev.js -w",
     "lint": "standard --fix"
   },
   "standard": {
@@ -56,7 +56,6 @@
     "babel-loader": "^7.1.5",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "babel-register": "^6.26.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "eslint": "^5.2.0",
@@ -75,6 +74,7 @@
   },
   "dependencies": {
     "express": "^4.16.3",
+    "babel-register": "^6.26.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-engine": "^4.5.1",
