@@ -1,7 +1,7 @@
 import express from 'express'
 // import React from 'react'
 // import { renderToString } from 'react-dom/server'
-import engine from 'react-engine'
+import reactViews from 'express-react-views'
 import path from 'path'
 // import Home from './client/Home'
 // import Html from './client/Html'
@@ -11,14 +11,10 @@ const port = 3000
 
 app.use(express.static('dist/public'))
 
-// definimos el engine para archivos jsx
-app.engine('.jsx', engine.server.create())
-// configuramos la ruta a las vistas
 app.set('views', path.resolve(__dirname, 'client/views'))
-// indicamos que el engine a usar es el de archivos jsx
 app.set('view engine', 'jsx')
-// le indicamos que use react-engine como engine de nuestras vistas
-app.set('view', engine.expressView)
+const options = { transformViews: false }
+app.engine('jsx', reactViews.createEngine(options))
 
 app.get('/', (req, res) => {
   // console.log('Hola mundo server!')
