@@ -3,7 +3,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import Home from './client/Home'
 import Layout from './client/layout'
-import Saludo from './client/Saludo'
+// import Saludo from './client/Saludo'
 
 const app = express()
 const port = 3000
@@ -23,17 +23,17 @@ app.get('/', (req, res) => {
     })
   )
 })
-
-app.get('/saludo', (req, res) => {
-  const body = renderToString(<Saludo name='John Serrano' />)
-  const title = 'Salundo'
-  res.send(
-    Layout({
-      body,
-      title
-    })
-  )
-})
+// Nota: toca crear varios archivos para que funcione
+// app.get('/saludo', (req, res) => {
+//   const body = renderToString(<Saludo name='John Serrano' />)
+//   const title = 'Salundo'
+//   res.send(
+//     Layout({
+//       body,
+//       title
+//     })
+//   )
+// })
 
 app.listen(port, () => {
   console.log(`Server on port ${port}`)
