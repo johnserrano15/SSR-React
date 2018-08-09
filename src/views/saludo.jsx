@@ -7,7 +7,7 @@ const SaludoView = props => {
   return (
     <Layout title={props.title} page={props.page}>
       <div id='saludo'>
-        <Saludo />
+        <Saludo saludo={props.saludo} />
       </div>
     </Layout>
   )
