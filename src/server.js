@@ -11,7 +11,7 @@ const port = 3000
 
 app.use(express.static('dist/public'))
 
-app.set('views', path.resolve(__dirname, 'client/views'))
+app.set('views', path.resolve(__dirname, 'views'))
 app.set('view engine', 'jsx')
 const options = { transformViews: false }
 app.engine('jsx', reactViews.createEngine(options))
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   // console.log('Hola mundo server!')
   // res.status(200).send('Hola mundo server :)')
   const title = 'Server side Rendering with Styled Components'
-  res.render('home', { title: title })
+  res.render('home', { title: title, page: 'home' })
 })
 
 app.get('/saludo', (req, res) => {
@@ -28,7 +28,9 @@ app.get('/saludo', (req, res) => {
   const data = {
     id: 12345,
     name: 'John Serrano',
-    saludo: 'Hola'
+    saludo: 'John Serrano',
+    title: 'Page of saludo',
+    page: 'saludo'
   }
   // res.status(200).send('Hola mundo server :)')
   res.render('saludo', data)
